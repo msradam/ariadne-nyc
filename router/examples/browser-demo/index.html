@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>unweaver-wasm browser demo</title>
+  <style>
+    body { font-family: monospace; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+    pre  { background: #f4f4f4; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    h2   { margin-top: 2rem; }
+    .ok  { color: #2a7a2a; }
+    .err { color: #a00; }
+  </style>
+</head>
+<body>
+<h1>unweaver-wasm browser demo</h1>
+<p>
+  Loads an OSW GeoJSON fixture, registers two profiles, and routes A→C.
+  The wheelchair profile avoids the steep middle edge and takes a longer detour.
+</p>
+
+<h2>Graph</h2>
+<pre id="graph-info">loading…</pre>
+
+<h2>Routes (A → C)</h2>
+<pre id="routes">computing…</pre>
+
+<h2>Reachability tree (wheelchair, 200m budget)</h2>
+<pre id="tree">computing…</pre>
+
+<script type="module">
+// Serve this file alongside the pkg/ directory.
+// e.g.: npx serve . --cors  (from experiments/unweaver-wasm/)
+import init, { Router } from "../../pkg/unweaver_wasm.js";
+
+async function fetchText(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`fetch ${url}: ${r.status}`);
+  return r.text();
+}
+
+async function run() {
+  await init();
+
+  const geojson = await fetchText("../../tests/fixtures/small_osw.geojson");
+  const router = Router.fromOSWGeoJSON(geojson);
+
+  document.getElementById("graph-info").textContent =
+    `nodes: ${router.nodeCount()}  edges: ${router.edgeCount()}`;
+
+  for (const name of ["generic_pedestrian", "manual_wheelchair", "low_vision"]) {
+    const json = await fetchText(`../profile-${name}.json`);
+    router.addProfile(name, json);
+  }
+
+  const [oLat, oLon] = [40.692, -73.990];
+  const [dLat, dLon] = [40.692, -73.988];
+
+  const routesEl = document.getElementById("routes");
+  routesEl.textContent = "";
+
+  for (const profile of ["generic_pedestrian", "manual_wheelchair"]) {
+    const json = router.shortestPathJSON(profile, oLat, oLon, dLat, dLon, null);
+    const result = JSON.parse(json);
+    const line = result.status === "Ok"
+      ? `[${profile}] ✓ total_cost=${result.total_cost.toFixed(1)}m  edges=${result.edges.length}`
+      : `[${profile}] ✗ ${result.code}`;
+    routesEl.textContent += line + "\n";
+  }
+
+  const treeJson = router.shortestPathTreeJSON(
+    "manual_wheelchair", oLat, oLon, 200, null
+  );
+  const tree = JSON.parse(treeJson);
+  document.getElementById("tree").textContent =
+    JSON.stringify({ reachable_nodes: tree.node_costs?.features?.length }, null, 2);
+}
+
+run().catch(err => {
+  document.getElementById("graph-info").textContent = "Error: " + err.message;
+  console.error(err);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "id": "generic_pedestrian",
+  "args": [],
+  "cost": {
+    "impassable_if": [],
+    "base": "length",
+    "multipliers": []
+  }
+}

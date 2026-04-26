@@ -1,0 +1,39 @@
+{
+  "id": "low_vision",
+  "args": [
+    {
+      "name": "avoid_unpaved",
+      "type": "bool",
+      "default": true,
+      "description": "Treat unpaved surfaces as impassable (unstable footing, no tactile guiding)."
+    }
+  ],
+  "cost": {
+    "impassable_if": [
+      {
+        "all": [
+          { "param": "avoid_unpaved", "op": "eq", "value": true },
+          { "attr": "surface", "op": "in", "value": ["unpaved", "gravel", "dirt", "grass", "mud", "sand"] }
+        ]
+      }
+    ],
+    "base": "length",
+    "multipliers": [
+      {
+        "description": "Rough stone surfaces increase effective cost by 50%.",
+        "if": { "attr": "surface", "op": "in", "value": ["cobblestone", "sett", "unhewn_cobblestone"] },
+        "multiply": 1.5
+      },
+      {
+        "description": "Zebra crossings are most visible — preferred.",
+        "if": { "attr": "crossing_markings", "op": "eq", "value": "zebra" },
+        "multiply": 0.8
+      },
+      {
+        "description": "Unknown-marking crossings may be unmarked — penalised.",
+        "if": { "attr": "crossing_markings", "op": "eq", "value": "unknown" },
+        "multiply": 1.5
+      }
+    ]
+  }
+}

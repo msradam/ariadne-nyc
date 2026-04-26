@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "src/app.html",
+    "src/routes/**/+{page,layout,server,error}*.{svelte,ts}",
+    "scripts/route-cli.ts",
+    "scripts/debug-browser.ts",
+    "tests/**/*.spec.ts"
+  ],
+  "project": [
+    "src/**/*.{ts,svelte}",
+    "scripts/**/*.ts"
+  ],
+  "ignoreDependencies": [
+    "@huggingface/transformers",
+    "@huggingface/inference",
+    "tailwindcss",
+    "@axe-core/playwright"
+  ]
+}

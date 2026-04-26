@@ -1,0 +1,45 @@
+# Built artifacts (regenerable)
+data/
+output/
+models/
+build/
+dist/
+
+# Per-language build / cache
+node_modules/
+.svelte-kit/
+target/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Test artifacts
+app/test-results/
+app/playwright-report/
+
+# Old prototypes — kept on disk for reference, not in the repo
+experiments/
+
+# Local working files
+cache/
+slides/
+design_handoff_v3/
+data.bak.*/
+output.bak.*/
+pipeline.ipynb
+
+# Loose top-level junk
+Ariadne.zip
+pitch.html
+pitch.md
+pitch.pdf
+pitch-preview.*.png
+screenshot-*.png
+*.log
+
+# Editor / OS
+.DS_Store
+.env
+hf_token

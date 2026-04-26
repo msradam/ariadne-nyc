@@ -1,0 +1,92 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.990, 40.692] },
+      "properties": { "_id": "node_A" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.989, 40.692] },
+      "properties": { "_id": "node_B" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.988, 40.692] },
+      "properties": { "_id": "node_C" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.989, 40.693] },
+      "properties": { "_id": "node_D", "barrier": "kerb", "kerb": "lowered" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-73.990, 40.692], [-73.989, 40.692]]
+      },
+      "properties": {
+        "_id": "edge_AB",
+        "_u_id": "node_A",
+        "_v_id": "node_B",
+        "footway": "sidewalk",
+        "length": 84.0,
+        "incline": 0.02,
+        "width": 2.5,
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-73.989, 40.692], [-73.988, 40.692]]
+      },
+      "properties": {
+        "_id": "edge_BC",
+        "_u_id": "node_B",
+        "_v_id": "node_C",
+        "footway": "sidewalk",
+        "length": 84.0,
+        "incline": 0.12,
+        "width": 2.0,
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-73.989, 40.692], [-73.989, 40.693]]
+      },
+      "properties": {
+        "_id": "edge_BD",
+        "_u_id": "node_B",
+        "_v_id": "node_D",
+        "footway": "crossing",
+        "length": 111.0,
+        "incline": 0.0,
+        "curbramps": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-73.989, 40.693], [-73.988, 40.692]]
+      },
+      "properties": {
+        "_id": "edge_DC",
+        "_u_id": "node_D",
+        "_v_id": "node_C",
+        "footway": "sidewalk",
+        "length": 140.0,
+        "incline": 0.01,
+        "width": 3.0,
+        "surface": "asphalt"
+      }
+    }
+  ]
+}

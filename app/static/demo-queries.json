@@ -1,0 +1,299 @@
+[
+  {
+    "id": 1,
+    "query": "wheelchair route from Grand Central to Penn Station",
+    "borough": "Manhattan",
+    "profile": "wheelchair",
+    "type": "route",
+    "notes": "Multimodal. Should suggest subway or walk along 42nd St"
+  },
+  {
+    "id": 2,
+    "query": "I walk slowly, how do I get from Times Square to Bryant Park",
+    "borough": "Manhattan",
+    "profile": "slow_walker",
+    "type": "route",
+    "notes": "Short walk, should be walk-only"
+  },
+  {
+    "id": 3,
+    "query": "low vision route from Union Square to the Flatiron Building",
+    "borough": "Manhattan",
+    "profile": "low_vision",
+    "type": "route",
+    "notes": "Prefers signalized crossings"
+  },
+  {
+    "id": 4,
+    "query": "stroller, Atlantic Terminal to Prospect Park",
+    "borough": "Brooklyn",
+    "profile": "stroller",
+    "type": "route",
+    "notes": "Walk only, Brooklyn"
+  },
+  {
+    "id": 5,
+    "query": "wheelchair, Grand Central to Atlantic Terminal",
+    "borough": "Cross-borough",
+    "profile": "wheelchair",
+    "type": "route",
+    "notes": "Manhattan → Brooklyn multimodal, ADA station check"
+  },
+  {
+    "id": 6,
+    "query": "I walk slowly, from Flushing to Forest Hills",
+    "borough": "Queens",
+    "profile": "slow_walker",
+    "type": "route",
+    "notes": "Queens multimodal, should pick subway"
+  },
+  {
+    "id": 7,
+    "query": "wheelchair user, get me from Yankee Stadium to Grand Concourse",
+    "borough": "Bronx",
+    "profile": "wheelchair",
+    "type": "route",
+    "notes": "Bronx walk, ADA sidewalk profile"
+  },
+  {
+    "id": 8,
+    "query": "I have a cane and tired legs, from Bay Ridge to Sunset Park",
+    "borough": "Brooklyn",
+    "profile": "slow_walker",
+    "type": "route",
+    "notes": "slow_walker inferred from cane + tired"
+  },
+  {
+    "id": 9,
+    "query": "stroller, from Astoria to Downtown Brooklyn",
+    "borough": "Cross-borough",
+    "profile": "stroller",
+    "type": "route",
+    "notes": "Queens → Brooklyn multimodal"
+  },
+  {
+    "id": 10,
+    "query": "slow walker from Inwood to the Cloisters",
+    "borough": "Manhattan",
+    "profile": "slow_walker",
+    "type": "route",
+    "notes": "Upper Manhattan, Fort Tryon Park area"
+  },
+  {
+    "id": 11,
+    "query": "I'm near Times Square and it's really hot, I need somewhere to cool down, I use a wheelchair",
+    "borough": "Manhattan",
+    "profile": "wheelchair",
+    "type": "comfort",
+    "notes": "Cooling center near Midtown, wheelchair"
+  },
+  {
+    "id": 12,
+    "query": "need a bathroom near DUMBO, I walk with a cane",
+    "borough": "Brooklyn",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "notes": "Bathroom resource in Brooklyn"
+  },
+  {
+    "id": 13,
+    "query": "slow walker near East Village, looking for a quiet place to sit and rest with wifi",
+    "borough": "Manhattan",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "notes": "quiet_indoor + wifi_power"
+  },
+  {
+    "id": 14,
+    "query": "wheelchair user, need an overnight shelter near Mott Haven, it's late",
+    "borough": "Bronx",
+    "profile": "wheelchair",
+    "type": "comfort",
+    "night": true,
+    "notes": "shelter_24h, night, Bronx"
+  },
+  {
+    "id": 15,
+    "query": "I'm in Brighton Beach and it's freezing, I need somewhere warm to go inside, I walk slowly",
+    "borough": "Brooklyn",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "notes": "warm_indoor, Brooklyn"
+  },
+  {
+    "id": 16,
+    "query": "I have a stroller in Jackson Heights, need a quiet indoor space for my baby",
+    "borough": "Queens",
+    "profile": "stroller",
+    "type": "comfort",
+    "notes": "quiet_indoor, Queens"
+  },
+  {
+    "id": 17,
+    "query": "visually impaired, need somewhere with wifi and power outlets near Astoria",
+    "borough": "Queens",
+    "profile": "low_vision",
+    "type": "comfort",
+    "notes": "wifi_power, low_vision"
+  },
+  {
+    "id": 18,
+    "query": "what cooling centers can I reach in 15 minutes from Penn Station, I walk slowly",
+    "borough": "Manhattan",
+    "profile": "slow_walker",
+    "type": "reachable",
+    "notes": "Isochrone + POI filter"
+  },
+  {
+    "id": 19,
+    "query": "wheelchair, what overnight shelters are within 20 minutes of Grand Central",
+    "borough": "Manhattan",
+    "profile": "wheelchair",
+    "type": "reachable",
+    "notes": "shelter_24h, wheelchair isochrone"
+  },
+  {
+    "id": 20,
+    "query": "I have a stroller, what libraries can I reach in 20 minutes from Atlantic Terminal",
+    "borough": "Brooklyn",
+    "profile": "stroller",
+    "type": "reachable",
+    "notes": "NYPL branches as quiet/wifi resource"
+  },
+  {
+    "id": 21,
+    "query": "slow walker near Jackson Heights, what shelters or cooling centers can I reach in 25 minutes",
+    "borough": "Queens",
+    "profile": "slow_walker",
+    "type": "reachable",
+    "notes": "Multi-resource type isochrone, Queens"
+  },
+  {
+    "id": 22,
+    "query": "wheelchair, it's midnight, need an overnight shelter near Jamaica Queens",
+    "borough": "Queens",
+    "profile": "wheelchair",
+    "night": true,
+    "type": "comfort",
+    "notes": "Night + shelter + wheelchair, outer Queens"
+  },
+  {
+    "id": 23,
+    "query": "soy usuario de silla de ruedas, quiero ir desde Grand Central hasta la Terminal Atlantic en Brooklyn",
+    "borough": "Cross-borough",
+    "profile": "wheelchair",
+    "type": "route",
+    "lang": "es",
+    "notes": "Spanish. Wheelchair cross-borough route"
+  },
+  {
+    "id": 24,
+    "query": "necesito encontrar un lugar fresco cerca de Jackson Heights, camino despacio",
+    "borough": "Queens",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "lang": "es",
+    "notes": "Spanish. Cooling center, Jackson Heights"
+  },
+  {
+    "id": 25,
+    "query": "estoy con mi carriola en Flushing y necesito un baño, ¿dónde puedo ir?",
+    "borough": "Queens",
+    "profile": "stroller",
+    "type": "comfort",
+    "lang": "es",
+    "notes": "Spanish. Bathroom near Flushing, stroller"
+  },
+  {
+    "id": 26,
+    "query": "tengo las piernas cansadas y busco un refugio nocturno cerca de Mott Haven esta noche",
+    "borough": "Bronx",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "lang": "es",
+    "night": true,
+    "notes": "Spanish. Overnight shelter, Bronx"
+  },
+  {
+    "id": 27,
+    "query": "我在法拉盛，走路很慢，需要找一个安静的室内空间休息",
+    "borough": "Queens",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "lang": "zh",
+    "notes": "Mandarin. Quiet indoor space, Flushing"
+  },
+  {
+    "id": 28,
+    "query": "я в Брайтон-Бич, мне нужен туалет, я хожу медленно",
+    "borough": "Brooklyn",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "lang": "ru",
+    "notes": "Russian. Bathroom, Brighton Beach"
+  },
+  {
+    "id": 29,
+    "query": "আমি জ্যাকসন হাইটসে আছি, গরম লাগছে, আমি ধীরে হাঁটি, একটি শীতল জায়গা খুঁজছি",
+    "borough": "Queens",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "lang": "bn",
+    "notes": "Bengali. Cooling center, Jackson Heights"
+  },
+  {
+    "id": 30,
+    "query": "mwen nan Flatbush, li cho anpil, mwen bezwen yon kote fre, mwen mache dousman",
+    "borough": "Brooklyn",
+    "profile": "slow_walker",
+    "type": "comfort",
+    "lang": "ht",
+    "notes": "Haitian Creole. Cooling center, Flatbush"
+  },
+
+  {
+    "id": 31,
+    "query": "it's 95 degrees out, I'm near Penn Station with a power wheelchair. Find me a cooling center",
+    "borough": "Manhattan",
+    "profile": "powered_wheelchair",
+    "type": "comfort",
+    "featured": true,
+    "notes": "MANHATTAN / HEAT EMERGENCY: Penn Station, power wheelchair, natural-language heat framing. Accessible comfort routing under duress."
+  },
+  {
+    "id": 32,
+    "query": "step-free route from Grand Central to Atlantic Terminal, manual wheelchair",
+    "borough": "Cross-borough",
+    "profile": "wheelchair",
+    "type": "route",
+    "featured": true,
+    "notes": "CROSS-BOROUGH / ADA TRANSIT: Manhattan → Brooklyn multimodal. Manual wheelchair ADA station check. Classic long-distance accessible routing test."
+  },
+  {
+    "id": 33,
+    "query": "nearest cooling center to 161 Amsterdam Avenue, wheelchair",
+    "borough": "Manhattan",
+    "profile": "wheelchair",
+    "type": "comfort",
+    "featured": true,
+    "notes": "ADDRESS GEOCODING / UWS: Named street address (Upper West Side), wheelchair. Tests Geosearch API address resolution in a dense Manhattan corridor."
+  },
+  {
+    "id": 34,
+    "query": "cooling centers within 15 minutes of Yankee Stadium, I walk slowly",
+    "borough": "Bronx",
+    "profile": "slow_walker",
+    "type": "reachable",
+    "featured": true,
+    "notes": "BRONX / ISOCHRONE: Landmark + slow walker profile. Reachability query outside Manhattan. Demonstrates borough coverage."
+  },
+  {
+    "id": 35,
+    "query": "what libraries or shelters can I reach from 2881 Third Avenue Mott Haven in 20 minutes, wheelchair",
+    "borough": "Bronx",
+    "profile": "wheelchair",
+    "type": "reachable",
+    "featured": true,
+    "notes": "ADDRESS + ISOCHRONE / BRONX: Street address in Mott Haven, wheelchair, multi-resource reachability. Tests address geocoder + comfort index in the South Bronx."
+  }
+]

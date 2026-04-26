@@ -1,0 +1,36 @@
+{
+  "id": "manual_wheelchair",
+  "args": [
+    {
+      "name": "uphill_max",
+      "type": "float",
+      "default": 0.0833,
+      "description": "Maximum uphill grade (rise/run). 0.0833 ≈ 5% ADA-recommended max."
+    },
+    {
+      "name": "downhill_max",
+      "type": "float",
+      "default": -0.1,
+      "description": "Maximum downhill grade (negative). -0.10 = 10% descent."
+    }
+  ],
+  "cost": {
+    "impassable_if": [
+      { "attr": "incline", "op": "gt", "param": "uphill_max" },
+      { "attr": "incline", "op": "lt", "param": "downhill_max" }
+    ],
+    "base": "length",
+    "multipliers": [
+      {
+        "description": "Crossings without a confirmed lowered curb ramp are strongly penalised. The router will detour to a confirmed ramp if one is nearby. Uses 3x so a detour up to ~2 blocks is preferred over an unconfirmed crossing.",
+        "if": {
+          "all": [
+            { "attr": "footway",   "op": "eq", "value": "crossing" },
+            { "attr": "curbramps", "op": "eq", "value": false }
+          ]
+        },
+        "multiply": 3.0
+      }
+    ]
+  }
+}
