@@ -1,6 +1,6 @@
 # unweaver-wasm
 
-*This is an experimental WebAssembly port of the routing pattern from [Unweaver](https://github.com/nbolten/unweaver), the reference routing engine for OpenSidewalks data, by Nick Bolten at the University of Washington Taskar Center for Accessible Technology. The architectural pattern. Profile-driven cost functions, runtime parameterisation, OSW-aware graph traversal. Is theirs. This port reimplements the pattern in Rust→WASM, with the cost-function-as-Python-file mechanism replaced by a JSON rule-tree format suitable for runtimes where arbitrary code execution isn't viable. The intent is to make OSW routing available wherever WebAssembly runs.*
+*This is an experimental WebAssembly port of the routing pattern from [Unweaver](https://github.com/nbolten/unweaver), the routing engine behind the Taskar Center's AccessMap, by Nick Bolten at the University of Washington Taskar Center for Accessible Technology. The architectural pattern. Profile-driven cost functions, runtime parameterisation, OSW-aware graph traversal. Is theirs. This port reimplements the pattern in Rust→WASM, with the cost-function-as-Python-file mechanism replaced by a JSON rule-tree format suitable for runtimes where arbitrary code execution isn't viable. The intent is to make OSW routing available wherever WebAssembly runs.*
 
 Apache-2.0 licence, matching Unweaver's.
 

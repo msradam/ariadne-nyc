@@ -16,7 +16,7 @@ This document records every data source, transformation, and schema mapping deci
 
 **Why borough-by-borough:** NYC is large. A single city-wide query would time out or exhaust memory on the Overpass API. Querying by borough polygon produces manageable payloads and allows partial reruns if one borough fails.
 
-**Why explicit custom_filter, not `network_type='walk'`:** OSMnx's `network_type='walk'` applies its own undocumented heuristics for what counts as walkable. For a standards-conformant pipeline, we prefer explicit control: we whitelist specific `highway` tag values and exclude `foot=no` and `access=no`. This makes the inclusion criteria auditable.
+**Why explicit custom_filter, not `network_type='walk'`:** OSMnx's `network_type='walk'` applies its own undocumented heuristics for what counts as walkable. We prefer explicit control: we whitelist specific `highway` tag values and exclude `foot=no` and `access=no`. This makes the inclusion criteria auditable.
 
 **Custom filter used:**
 ```
@@ -39,11 +39,11 @@ OSM `crossing` tags are mapped to `crossing:markings`. Non-canonical values (e.g
 
 ### 2. NYC DOT Pedestrian Ramp Locations (`ufzp-rrqu`)
 
-**What it is:** A point dataset of 217,000+ pedestrian curb ramp locations citywide, surveyed by the NYC Department of Transportation 2017-2020. Records ramp location, geometry (running slope, cross slope, landing dimensions), and condition.
+**What it is:** A point dataset of 217,000+ pedestrian curb ramp locations citywide, collected for the NYC Department of Transportation by Cyclomedia from vehicle-mounted imagery and LiDAR, 2017-2020, mostly in 2018. It shows that a ramp was there when the imagery was captured, not that it is usable today, and DOT says the data does not establish ADA compliance. Records ramp location, geometry (running slope, cross slope, landing dimensions), and condition.
 
 **Where it came from:** NYC Open Data Socrata API (`data.cityofnewyork.us/resource/ufzp-rrqu.json`), paginated in batches of 10,000 rows.
 
-**License:** Public Domain (NYC Open Data).
+**License:** NYC Open Data terms of use.
 
 **How it was transformed:** Each ramp point becomes an OSW CurbRamp Point Node:
 ```json
@@ -75,7 +75,7 @@ OSM `crossing` tags are mapped to `crossing:markings`. Non-canonical values (e.g
 
 **Where it came from:** NYC Open Data Socrata API, paginated in batches of 5,000 rows.
 
-**License:** Public Domain (NYC Open Data).
+**License:** NYC Open Data terms of use.
 
 **How it was transformed:** Used as a gap-fill source for OSM sidewalk coverage.
 
@@ -100,7 +100,7 @@ This approach works well for elongated strip geometry (typical of sidewalk polyg
 
 **Where it came from:** NYC Open Data Socrata API. Falls back to OSMnx geocoding if the Socrata endpoint is unavailable.
 
-**License:** Public Domain (NYC Open Data).
+**License:** NYC Open Data terms of use.
 
 **How it was used:**
 1. **Root metadata `region`:** The five borough polygons are unioned into a single MultiPolygon and written to the OSW root-level `region` field. This is the geographic scope declaration of the dataset.
@@ -146,7 +146,7 @@ All decisions are recorded in `data/clean/cleaning_report.md`.
 
 ### Stage 3: Schema Map
 
-Maps cleaned source data to OSW-conformant feature types. Every transformation is documented in code comments adjacent to the transformation itself (not just here).
+Maps cleaned source data to OSW v0.3 feature types. Every transformation is documented in code comments adjacent to the transformation itself (not just here).
 
 The most complex transformation is the planimetric gap-fill: deriving sidewalk centerlines from polygon geometry and filtering by OSM coverage. See the Planimetric section above for the method.
 
@@ -207,6 +207,7 @@ Where OSM has `sidewalk=both` or `sidewalk=left/right` tags on a street centerli
 4. **Planimetric centerlines are approximate.** The Voronoi skeleton method produces geometrically correct but not survey-accurate centerlines.
 5. **No live feeds.** The pipeline is a point-in-time snapshot. Rerun to refresh.
 6. **MTA ADA annotation not implemented.** The MTA ADA station index is acquired and staged but the spatial join to pedestrian nodes is not yet implemented. V1.1 scope.
+7. **Conformance checked only here.** Stage 5 is this pipeline's own check. The graph was not run through `python-osw-validation`, and nothing in it has been checked on the ground. This pipeline later grew into [opensidewalks-nyc](https://github.com/msradam/opensidewalks-nyc); Ariadne still loads the graph built here in April 2026, not an opensidewalks-nyc release.
 
 ---
 

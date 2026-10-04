@@ -91,19 +91,21 @@ The app is responsive: it works on a phone (stacked layout, ~55 vh map on top, q
 
 ## Pipeline
 
-The pipeline produces two kinds of output: the OpenSidewalks-conformant walk graph (the original deliverable; useful on its own for accessibility research) and the indexes the app loads at boot.
+The pipeline produces two kinds of output: a walk graph in the OpenSidewalks Schema v0.3 format and the indexes the app loads at boot.
 
 ### OpenSidewalks v0.3 walk graph
 
 Targets the [OpenSidewalks Schema v0.3](https://sidewalks.washington.edu/opensidewalks/0.3/schema.json) from the Taskar Center for Accessible Technology at the University of Washington. Sidewalks are first-class edges (not attributes of streets). Crossings are edges on road surfaces. Curb interfaces are Point Nodes connecting sidewalks to crossings. Every feature carries `ext:source`, `ext:source_timestamp`, and `ext:pipeline_version`.
+
+This graph is the one the live demo loads and the one behind every route and screenshot in this README. It was built by this repository's own pipeline (version 0.1.0) in April 2026. That pipeline is an early form of [opensidewalks-nyc](https://github.com/msradam/opensidewalks-nyc), but the graph is not an opensidewalks-nyc release, and Ariadne has not been rebuilt or rerun on opensidewalks-nyc v0.3.3-nyc.1. Its only conformance check is this pipeline's own JSON Schema pass (see `METHODOLOGY.md`); it was not run through `python-osw-validation`. It has no incline data, and nothing in it has been checked on the ground. This is an independent project, not made or endorsed by the Taskar Center, OpenSidewalks, TDEI, NYC DOT or the City of New York.
 
 Sources, all public:
 
 | Source | What we use it for | License |
 |---|---|---|
 | OpenStreetMap (via OSMnx + Overpass) | Footways, crossings, steps, residential streets, named POIs, addresses | ODbL-1.0 |
-| NYC DOT Pedestrian Ramp Locations (`ufzp-rrqu`) | 217k+ curb ramp points with condition data | Public Domain |
-| NYC Planimetric Sidewalks (`vfx9-tbb6`) | Sidewalk polygons from aerial imagery | Public Domain |
+| NYC DOT Pedestrian Ramp Locations (`ufzp-rrqu`), collected for DOT by Cyclomedia, mostly in 2018 | 217k+ curb ramp points with condition data | NYC Open Data terms of use |
+| NYC Planimetric Sidewalks (`vfx9-tbb6`) | Sidewalk polygons from aerial imagery | NYC Open Data terms of use |
 | NYC Borough Boundaries (`7t3b-ywvw`) | Borough polygons for region metadata | Public Domain |
 | MTA ADA Station List | ADA-accessible subway stations | Public Domain |
 | NYC Open Data + NYPL/BPL/QPL APIs | Comfort resources (cooling centers, libraries, restrooms, harm reduction, food pantries, …) | Public Domain / CC BY |
@@ -182,6 +184,6 @@ A couple of things worth knowing:
 
 Apache-2.0. See [LICENSE](LICENSE).
 
-Built on public data from OpenStreetMap (ODbL), NYC Open Data (Public Domain), MTA (Public Domain), NYPL (CC BY 2.0), and the OpenSidewalks Schema (open spec).
+Built on public data from OpenStreetMap (ODbL), NYC Open Data (NYC Open Data terms of use), MTA (Public Domain), NYPL (CC BY 2.0), and the OpenSidewalks Schema (open spec).
 
 The Granite 4.0 1B language model is from IBM, distributed under Apache 2.0. The WASM router is original code in this repo. Minotor (the RAPTOR transit router) is its own npm package.
